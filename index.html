@@ -1,152 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fan Zheng - Homepage</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f7f7fa;
-            margin: 0;
-            color: #222;
-        }
-        .container {
-            max-width: 820px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 32px rgba(0,0,0,0.07);
-            padding: 36px 42px 48px 42px;
-        }
-        h1 {
-            font-size: 2.2em;
-            margin-bottom: 0.2em;
-        }
-        .subtitle {
-            font-size: 1.1em;
-            color: #444;
-            margin-bottom: 1.5em;
-        }
-        section {
-            margin-bottom: 2.2em;
-        }
-        h2 {
-            color: #2d6cdf;
-            border-bottom: 1px solid #e2e6ed;
-            padding-bottom: 2px;
-            margin-top: 0.7em;
-        }
-        ul {
-            padding-left: 1.3em;
-        }
-        li {
-            margin-bottom: 0.7em;
-        }
-        .pub-title {
-            font-weight: bold;
-        }
-        .pub-authors {
-            color: #444;
-        }
-        .contact {
-            margin-top: 0.7em;
-            margin-bottom: 2.2em;
-            font-size: 1.03em;
-        }
-        @media (max-width: 600px) {
-            .container { padding: 18px 5vw; }
-            h1 { font-size: 1.45em; }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fan Zheng – Homepage</title>
+  <meta name="description" content="Fan Zheng – Mathematician & Ramón y Cajal Investigator. Research in nonlinear PDEs, fluid dynamics, and Math + AI." />
+  <style>
+    :root{
+      --bg: #0b0b0c;
+      --panel: #111214;
+      --text: #e7e7ea;
+      --muted: #a9a9b2;
+      --border: #232428;
+      --accent: #6ee7b7;
+      --chip:#1a1b1f;
+    }
+    :root.light{
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --text: #0b0b0c;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+      --chip:#f3f4f6;
+      --accent:#0ea5e9;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;height:100%}
+    body{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text); line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+    .header{position:sticky;top:0;z-index:50;background:color-mix(in oklab, var(--bg) 85%, transparent);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--border)}
+    .header__row{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:.5rem;align-items:center;font-weight:600}
+    .sparkle{width:18px;height:18px;display:inline-block;background:conic-gradient(from 0deg, #f59e0b, #84cc16, #22c55e, #06b6d4, #8b5cf6, #f59e0b);border-radius:4px;filter:saturate(1.4)}
+    nav{display:none;gap:1.25rem}
+    @media (min-width: 768px){nav{display:flex}}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);background:var(--panel);color:var(--text);padding:.55rem .9rem;border-radius:.7rem;cursor:pointer}
+    .btn--ghost{background:transparent}
+    .badge{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--border);background:var(--chip);color:var(--text);padding:.25rem .6rem;border-radius:999px;font-size:.8rem}
+    .section{scroll-margin-top:96px;padding:64px 0;border-bottom:1px solid var(--border)}
+    h1{font-size:clamp(2rem, 4vw, 3.5rem);line-height:1.1;margin:0}
+    h2{font-size:clamp(1.4rem, 2.2vw, 2rem);margin:.2rem 0 .8rem}
+    p{margin:.6rem 0}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:1rem}
+    @media (min-width:768px){.grid--hero{grid-template-columns:1.2fr .8fr} .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (min-width:1024px){.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .card{border:1px solid var(--border);background:var(--panel);border-radius:1rem;padding:1rem}
+    .card h3{margin:.2rem 0 .5rem;font-size:1rem}
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem}
+    .chip{background:var(--chip);border:1px solid var(--border);border-radius:999px;padding:.2rem .6rem;font-size:.8rem}
+    .row{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+    .avatar{width:200px;height:200px;border-radius:1rem;overflow:hidden;border:2px solid var(--border)}
+    .list{margin:.5rem 0 .2rem;padding-left:1.1rem}
+    .list li{margin:.2rem 0}
+    .footer{padding:40px 0}
+    .right{display:flex;gap:.8rem;align-items:center}
+    .link{color:var(--muted)}
+    .link:hover{color:var(--text)}
+    .input, textarea{width:100%;padding:.6rem .7rem;border:1px solid var(--border);border-radius:.6rem;background:var(--panel);color:var(--text)}
+    textarea{resize:vertical;min-height:140px}
+    .submit{padding:.7rem 1rem;border:1px solid var(--border);border-radius:.7rem;background:var(--text);color:var(--bg);font-weight:600;cursor:pointer}
+    .kicker{font-size:.9rem;margin-top:.5rem}
+    .sr{position:absolute;left:-9999px}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Fan Zheng</h1>
-        <div class="subtitle">Ramón y Cajal Investigator, Instituto de Ciencias Matemáticas</div>
-        <div class="contact">
-            <strong>Email:</strong> <a href="mailto:fan.zheng@icmat.es">fan.zheng@icmat.es</a>
-        </div>
-
-        <section>
-            <h2>Education</h2>
-            <ul>
-                <li><strong>Doctor in Mathematics</strong>, Princeton University, 2014–2019<br>
-                    Advisor: Alexandru Ionescu</li>
-                <li><strong>Bachelor in Mathematics</strong>, Massachusetts Institute of Technology, 2010–2014</li>
-                <li><strong>High School</strong>, Shanghai High School, 2007–2010</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Work Experience</h2>
-            <ul>
-                <li><strong>Ramón y Cajal Investigator</strong>, Instituto de Ciencias Matemáticas, 2024–Present</li>
-                <li><strong>Postdoc</strong>, Instituto de Ciencias Matemáticas, 2019–2024</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Publications</h2>
-            <h3>Mathematics</h3>
-            <ul>
-                <li>
-                    <span class="pub-title">Finite time singularities to the 3D incompressible Euler equations for solutions in C<sup>∞</sup>(ℝ³\\{0}) ∩ C<sup>1,α</sup> ∩ L²</span>.<br>
-                    <span class="pub-authors">Diego Córdoba, Luis Martinez-Zoroa, Fan Zheng</span>, Ann. PDE, Vol. 11 (2025).
-                </li>
-                <li>
-                    <span class="pub-title">Exactly self-similar blow-up of the generalized De Gregorio equation</span>.<br>
-                    <span class="pub-authors">Fan Zheng</span>, Nonlinearity 36 (10), 5252–5264, 2023.
-                </li>
-                <li>
-                    <span class="pub-title">Long-term Regularity of 3D Gravity Water Waves</span>.<br>
-                    <span class="pub-authors">Fan Zheng</span>, Communications in Pure and Applied Mathematics, 75(5), 1074–1080, 2022.
-                </li>
-                <li>
-                    <span class="pub-title">The lifespan of classical solutions for the inviscid Surface Quasi-geostrophic equation</span>.<br>
-                    <span class="pub-authors">Ángel Castro, Diego Córdoba, Fan Zheng</span>, Ann. Inst. H. Poincaré C, 38(5), 1583–1603, 2021.
-                </li>
-                <li>
-                    <span class="pub-title">Stability of traveling waves for the Burgers-Hilbert equation</span>.<br>
-                    <span class="pub-authors">Ángel Castro, Diego Córdoba, Fan Zheng</span>, Analysis & PDE, 16(9), 2109–2145, 2023.
-                </li>
-                <li>
-                    <span class="pub-title">Long-term regularity of the periodic Euler–Poisson system for electrons in 2D</span>.<br>
-                    <span class="pub-authors">Fan Zheng</span>, Communications in Mathematical Physics, 366, 1135–1172, 2019.
-                </li>
-            </ul>
-            <h3>Math + AI</h3>
-            <ul>
-                <li>
-                    <span class="pub-title">Long-horizon reasoning agent for Olympiad-level mathematical problem solving</span> (submitted to ICLR 2026).<br>
-                    <span class="pub-authors">S. Gao, Y. Gu, Z. Wu, L. Kong, W. Zhang, Z. Cai, F. Zheng, T. Ma, J. Shen, H. Zhao, D. Zhang, H. Zhang, K. Liu, C. Lyu, Y. Duan, C. Chen, N. Ma, J. Gao, H. Lyu, D. Lin, K. Chen</span>
-                </li>
-                <li>
-                    <span class="pub-title">Achieving expert-level agent from foundation model via complexity curriculum reinforcement learning with synthetic data</span> (submitted to ICLR 2026).<br>
-                    <span class="pub-authors">H. Zhao, J. Shen, Y. Zhang, S. Gao, K. Liu, T. Ma, F. Zheng, D. Lin, W. Zhang, K. Chen</span>
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Awards</h2>
-            <ul>
-                <li>Ramón y Cajal grant, first place, 2024</li>
-                <li>Gold Medal, Alibaba Global Math Competition, 2020</li>
-                <li>Centennial Scholarship, Princeton University, 2014</li>
-                <li>Freshman Scholarship, Peking University, 2010</li>
-                <li>IMO Gold Medal, Germany, 2009</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Research Plans</h2>
-            <ul>
-                <li>Combining traditional analytical and numerical methods with LLMs to find blow-up profiles for the Euler and Navier–Stokes equations.</li>
-                <li>Discovering new mathematical constructions using a combination of LLMs and human wisdom.</li>
-                <li>Making LLM-generated mathematical proofs rigorous.</li>
-            </ul>
-        </section>
+<header class="header">
+  <div class="container header__row">
+    <a href="#top" class="brand"><span class="sparkle" aria-hidden="true"></span> Fan Zheng</a>
+    <nav>
+      <a href="#about" class="link">About</a>
+      <a href="#research" class="link">Research</a>
+      <a href="#pubs" class="link">Publications</a>
+      <a href="#experience" class="link">Experience</a>
+      <a href="#awards" class="link">Awards</a>
+      <a href="#interests" class="link">Interests</a>
+      <a href="#writing" class="link">Math + AI</a>
+<!--
+      <a href="#contact" class="link">Contact</a>
+-->
+    </nav>
+    <div class="right">
+      <button id="theme" class="btn btn--ghost" aria-label="Toggle theme">🌙</button>
+      <a class="btn" href="CV.pdf" target="_blank" rel="noreferrer">⬇ Resume</a>
     </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="section">
+    <div class="container grid grid--hero" style="align-items:center">
+      <div>
+        <span class="badge">🚀 Ramón y Cajal Investigator @ ICMAT</span>
+        <h1>Mathematician & Ramón y Cajal Investigator working on PDEs, fluid dynamics, and Math + AI</h1>
+        <p class="muted kicker">I study nonlinear PDEs arising in fluid dynamics (Euler, SQG, water waves) and explore Math + AI for long-horizon reasoning.</p>
+        <div class="row" style="margin-top:.75rem">
+          <a class="btn" href="#pubs">See my work</a>
+          <a class="btn btn--ghost" href="mailto:fan.zheng@icmat.es">✉️ Contact me</a>
+          <a class="link" href="https://github.com/fanzheng1729" target="_blank">GitHub</a>
+<!--
+          <a class="link" href="https://fanzheng1729.github.io" target="_blank">Website</a>
+-->
+        </div>
+        <div class="row muted kicker">📍 Madrid, Spain</div>
+      </div>
+      <div style="justify-self:center">
+        <div style="width:200px;overflow:hidden;border-radius:1rem;border:1px solid #ccc">
+          <img src="https://www.icmat.es/images/personal/fzheng.jpg" alt="Fan Zheng" style="width:100%;height:auto;object-fit:contain;border-radius:1rem"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About</h2>
+      <p class="muted">A quick intro</p>
+      <div class="card">
+        <p>
+          I'm Fan Zheng, a mathematician & Ramón y Cajal Investigator based in Madrid, Spain. My work focuses on nonlinear
+          PDEs in fluid dynamics and on Math + AI for symbolic and numerically assisted reasoning.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pubs" class="section">
+    <div class="container">
+      <h2>Publications (selected)</h2>
+      <p class="muted">A few representative papers</p>
+      <div class="grid grid-2 grid-3">
+        <article class="card">
+          <h3>Finite-time singularities for 3D incompressible Euler</h3>
+          <p class="muted">D. Córdoba, L. Martinez-Zoroa, F. Zheng. Annals of PDE, Vol. 11 (2025).</p>
+          <div class="chips">
+            <span class="chip">Euler</span><span class="chip">Singularity</span><span class="chip">PDE</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Exactly self-similar blow-up of the generalized De Gregorio equation</h3>
+          <p class="muted">F. Zheng. Nonlinearity 36(10), 5252–5264 (2023).</p>
+          <div class="chips">
+            <span class="chip">Blow-up</span><span class="chip">1D model</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Long-term regularity of 3D gravity water waves</h3>
+          <p class="muted">F. Zheng. Comm. Pure Appl. Math. 75(5), 1074–1080 (2022).</p>
+          <div class="chips">
+            <span class="chip">Water Waves</span><span class="chip">Regularity</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Lifespan of classical solutions for inviscid SQG</h3>
+          <p class="muted">Á. Castro, D. Córdoba, F. Zheng. Ann. Inst. H. Poincaré C 38(5), 1583–1603 (2021).</p>
+          <div class="chips">
+            <span class="chip">SQG</span><span class="chip">Lifespan</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Stability of traveling waves for Burgers–Hilbert</h3>
+          <p class="muted">Á. Castro, D. Córdoba, F. Zheng. Analysis & PDE 16(9), 2109–2145 (2023).</p>
+          <div class="chips">
+            <span class="chip">Burgers–Hilbert</span><span class="chip">Stability</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Long-term regularity of the periodic Euler–Poisson system (2D)</h3>
+          <p class="muted">F. Zheng. Comm. Math. Phys. 366, 1135–1172 (2019).</p>
+          <div class="chips">
+            <span class="chip">Euler–Poisson</span><span class="chip">Regularity</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="container">
+      <h2>Experience</h2>
+      <p class="muted">Where I've worked</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Ramón y Cajal Investigator — ICMAT</h3>
+          <p class="muted">2024 — Present</p>
+          <ul class="list">
+            <li>Research in nonlinear PDEs (Euler, SQG, water waves) and Math + AI.</li>
+            <li>Developing approaches to blow-up and long-time dynamics.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Postdoctoral Researcher — ICMAT</h3>
+          <p class="muted">2019 — 2024</p>
+          <ul class="list">
+            <li>Worked with Ángel Castro and Diego Córdoba on SQG, Burgers–Hilbert, and Euler.</li>
+            <li>Publications in CPAM, Ann. PDE, Analysis & PDE, CMP, Nonlinearity.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Ph.D. in Mathematics — Princeton University</h3>
+          <p class="muted">2014 — 2019</p>
+          <ul class="list">
+            <li>Advisor: Alexandru Ionescu</li>
+            <li>Topic: Dispersive PDE and fluid models.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>B.S. in Mathematics — MIT</h3>
+          <p class="muted">2010 — 2014</p>
+          <ul class="list"><li>Undergraduate studies in mathematics.</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="section">
+    <div class="container">
+      <h2>Research</h2>
+      <p class="muted">Focus & plans</p>
+      <div class="card">
+        <ul class="list">
+          <li>Combine analytical & numerical methods with LLMs to find blow‑up profiles for Euler/Navier–Stokes.</li>
+          <li>Discover new mathematical constructions via a synergy of LLMs and human insight.</li>
+          <li>Make LLM‑generated mathematical proofs rigorous.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards" class="section">
+    <div class="container">
+      <h2>Awards</h2>
+      <p class="muted">Honors & scholarships</p>
+      <div class="grid grid-2">
+        <div class="card"><strong>Ramón y Cajal grant (1st place)</strong><div class="muted">2024</div></div>
+        <div class="card"><strong>Gold Medal, Alibaba Global Math Competition</strong><div class="muted">2020</div></div>
+        <div class="card"><strong>Centennial Scholarship, Princeton University</strong><div class="muted">2014</div></div>
+        <div class="card"><strong>Freshman Scholarship, Peking University</strong><div class="muted">2010</div></div>
+        <div class="card"><strong>IMO Gold Medal (Germany)</strong><div class="muted">2009</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interests" class="section">
+    <div class="container">
+      <h2>Research Interests</h2>
+      <p class="muted">Areas I work in</p>
+      <div class="chips">
+        <span class="chip">Nonlinear PDE</span>
+        <span class="chip">Fluid Dynamics</span>
+        <span class="chip">Euler & Navier–Stokes</span>
+        <span class="chip">SQG</span>
+        <span class="chip">Gravity Water Waves</span>
+        <span class="chip">Harmonic Analysis</span>
+        <span class="chip">Dispersive Equations</span>
+        <span class="chip">Math + AI</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" class="section">
+    <div class="container">
+      <h2>Math + AI</h2>
+      <p class="muted">Recent preprints and submissions</p>
+      <div class="grid grid-2">
+        <a class="card" href="#">
+          <div class="muted">2025-09-19</div>
+          <h3>Long-horizon reasoning agent for Olympiad-level mathematical problem solving (preprint)</h3>
+        </a>
+        <a class="card" href="#">
+          <div class="muted">2025-09-20</div>
+          <h3>Expert-level agent via complexity curriculum RL with synthetic data (preprint)</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+<!--
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="muted">Let's build something together</p>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="card">
+        <label>Name<br/><input class="input" name="name" required placeholder="Ada Lovelace"/></label><br/>
+        <label>Email<br/><input type="email" class="input" name="email" required placeholder="ada@countess.uk"/></label><br/>
+        <label>Message<br/><textarea name="message" placeholder="Tell me about your project..."></textarea></label><br/>
+        <div class="row" style="justify-content:space-between">
+          <div class="muted">Prefer email? fan.zheng@icmat.es</div>
+          <button class="submit" type="submit">Send</button>
+        </div>
+      </form>
+    </div>
+  </section>
+-->
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container row" style="justify-content:space-between">
+    <div class="row">
+      <div style="width:36px;border-radius:9px;overflow:hidden;border:1px solid var(--border);margin-right:.6rem">
+        <img src="https://www.icmat.es/images/personal/fzheng.jpg" alt="Fan Zheng"/>
+      </div>
+      <div>
+        <div style="font-weight:600">Fan Zheng</div>
+        <div class="muted" style="font-size:.85rem">© <span id="year"></span> All rights reserved</div>
+      </div>
+    </div>
+    <div class="row">
+      <a class="link" href="https://github.com/fanzheng1729" target="_blank">GitHub</a>
+<!--
+      <a class="link" href="#" target="_blank">LinkedIn</a>
+-->
+    </div>
+  </div>
+</footer>
+
+<script>
+// Theme toggle (persists)
+(function(){
+  const btn=document.getElementById('theme');
+  const key='pref-theme';
+  function apply(t){ if(t==='light'){ document.documentElement.classList.add('light'); btn.textContent='☀️';} else { document.documentElement.classList.remove('light'); btn.textContent='🌙';} }
+  let pref=localStorage.getItem(key) || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light':'dark');
+  apply(pref);
+  btn.addEventListener('click', ()=>{ pref = (pref==='light'?'dark':'light'); localStorage.setItem(key,pref); apply(pref); });
+})();
+// Contact form demo
+document.getElementById('contact-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const data=new FormData(e.target);
+  alert(`Thanks, ${data.get('name')}! I'll reach out at ${data.get('email')}\\n\\nMessage:\\n${data.get('message')}`);
+  e.target.reset();
+});
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
